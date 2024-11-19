@@ -1,0 +1,57 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package pe2;
+
+import Quarter2.GraphPaperLayout;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class PE2 implements ActionListener{
+    
+    JFrame frame;
+    JButton increase;
+    JButton decrease;
+    
+    int width = 300;
+    int height = 300;
+   public PE2(){
+       frame = new JFrame ("frame");
+       increase = new JButton("Increase");
+       decrease = new JButton ("Decrease");
+   }
+   
+   public void setFrame(){
+    frame.setLayout(new GraphPaperLayout(new Dimension(10,10)));
+    frame.add(increase, new Rectangle(1,1,8,2));
+    frame.add(decrease, new Rectangle(1,4,8,2));
+    
+    frame.setVisible(true);
+    frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
+    frame.setSize(width, height);
+    
+    increase.addActionListener(this);
+    decrease.addActionListener(this);
+   }
+    public static void main (String[] args) {
+    PE2 la=new PE2();
+    la.setFrame(); 
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource()==increase){
+            width = width + 20;
+            height = height + 20;
+            frame.setSize(width,height);
+        }
+        
+        else if(e.getSource()==decrease){
+            width = width - 20;
+            height = height - 20;
+            frame.setSize(width, height);
+        }
+    }
+}
